@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400');
+
+html {font-size: 100%;} /*16px*/
+
+body {
+  background: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #212529;
+}
+
+p {margin-bottom: 1rem;}
+
+.col {
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 3.052rem;
+}
+
+h2 {font-size: 2.441rem; 
+    margin-bottom: 3rem;
+    color: #24383F;
+}
+
+h3 {font-size: 1.953rem;}
+
+h4 {font-size: 1.563rem;
+    margin-bottom: 8rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+small, .text_small {font-size: 0.8rem;}
+
+#nav-link:active{
+    color: black;
+}
+.cabecera {
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #F5F7F8;
+    padding-top: 0rem;
+}
+.cabeceraimagen {
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../imgs/cabeceras_internas.png");
+    color: #F5F7F8;
+    padding-top: 4rem;
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 0px;
+    color: #212529;
+    box-shadow: #212529;
+    border-radius: 1rem;
+    margin-bottom: 0px;
+}
+.cabecera_secciones {
+    background-size:cover;
+    background-position: center;
+    background-image: url("../imgs/cabeceras_internas.png");
+    color: #F5F7F8;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.btn-light {
+    margin-bottom: 8rem;
+}
+.Proyectos {
+    background-color: #ffffff;
+}
+.nav-link{
+    color: #000000;
+    border-color: #A22687;
+}
+.footer{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #A22687;
+    color: #F5F7F8;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+.navbar-toggler {
+    color: #24383F;
+    opacity: 100%;
+}
+.btn-light {
+    color: #A22687;
+}
+.bg-light {
+    background-color: #ffffff;
+}
+.card-title{
+    margin-top: .5rem;
+    text-align: left;
+}
+.card {
+    margin-bottom: 2rem;
+    border-color: #ffffff;
+}
+.card-link {
+    color: #212529;
+}
+.card-text {
+    text-align: left;
+}
+.card-body {
+    text-align: left;
+}
+.herramientas{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+.card_herramienta {
+    padding: 1rem;
+
+}
+.accordion-header {
+    margin-top: 0%;
+}
+.desafios {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.detalle-desafio{
+    margin-top: 4rem;
+}
+.secciones {
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    color: #F5F7F8;
+    background-image: url("../imgs/Internas.png");
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.btn-primary {
+    background-color: #A22687;
+    color: #fff;
+    align-items: center;
+    border-color: #A22687;
+    box-shadow: none;
+}
+.button {
+    box-shadow: none;
+}
