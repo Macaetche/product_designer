@@ -153,9 +153,8 @@
     border-radius:var(--radius-lg); background:var(--gradient-hero); aspect-ratio:4/5; position:relative; overflow:hidden;
     box-shadow:var(--shadow-glow);
   }
-  .about-card .initials{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces',serif; font-size:120px; color:rgba(255,255,255,0.16); font-weight:600;
+  .about-card .about-photo{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   }
   .about-card .tag{
     position:absolute; bottom:22px; left:22px; right:22px;
@@ -329,8 +328,8 @@
     <div class="about-grid">
       <div class="reveal">
         <div class="about-card">
+          <img class="about-photo" src="assets/Foto de perfil LI.png" alt="Foto de perfil">
           <div class="grain"></div>
-          <div class="initials">ME</div>
           <div class="tag"><div class="num">8+</div><div class="lbl">años liderando diseño</div></div>
         </div>
       </div>
