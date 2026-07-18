@@ -171,24 +171,57 @@
   .pill-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
   .pill{ font-size:12.5px; font-weight:500; color:var(--ink-soft); background:var(--surface-strong); border:1px solid var(--glass-border); padding:8px 15px; border-radius:100px; }
 
-  /* ---------- timeline ---------- */
-  .timeline{ position:relative; margin-top:10px; z-index:2; }
-  .timeline::before{ content:''; position:absolute; left:130px; top:6px; bottom:6px; width:1px; background:linear-gradient(180deg, var(--violet-2), var(--magenta)); opacity:0.5; }
-  .tl-item{ display:grid; grid-template-columns:130px 1fr; gap:32px; position:relative; padding-bottom:46px; }
-  .tl-item:last-child{ padding-bottom:0; }
-  .tl-year{ font-family:'Fraunces',serif; font-size:15px; color:var(--ink-soft); text-align:right; padding-top:8px; }
-  .tl-dot{ position:absolute; left:124px; top:11px; width:12px; height:12px; border-radius:50%; background:var(--gradient-hero); box-shadow:0 0 0 5px var(--bg), 0 0 14px rgba(155,79,235,0.6); }
-  .tl-card{ background:var(--surface-strong); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px 30px; transition:.3s ease; box-shadow:var(--shadow-card); }
-  .tl-card:hover{ border-color:rgba(138,63,224,0.3); transform:translateY(-2px); box-shadow:0 16px 36px -18px rgba(110,47,217,0.28); }
-  .tl-role{ font-family:'Fraunces',serif; font-size:19px; margin-bottom:4px; }
-  .tl-company{ font-size:13.5px; font-weight:600; color:var(--violet-2); margin-bottom:12px; letter-spacing:0.02em; }
-  .tl-desc{ font-size:15px; line-height:1.7; color:var(--ink-soft); }
+  /* ---------- experiencia (acordeón) ---------- */
+  .exp-index{ border-top:1px solid var(--line); margin-top:10px; z-index:2; position:relative; }
+  .exp-row{ border-bottom:1px solid var(--line); }
+  .exp-row summary{
+    list-style:none; cursor:pointer; -webkit-tap-highlight-color:transparent;
+    display:grid; grid-template-columns:130px 44px 1fr auto 24px; align-items:center; gap:20px;
+    padding:26px 4px; transition:background .25s ease;
+  }
+  .exp-row summary::-webkit-details-marker{ display:none; }
+  .exp-row summary::marker{ content:''; }
+  .exp-row summary:hover{ background:var(--surface); }
 
-  @media (max-width:720px){
-    .timeline::before{ left:18px; }
-    .tl-item{ grid-template-columns:1fr; padding-left:38px; gap:8px; }
-    .tl-year{ text-align:left; font-size:12.5px; color:var(--muted); }
-    .tl-dot{ left:12px; }
+  .exp-year{ font-family:'Fraunces',serif; font-size:15px; color:var(--ink-soft); }
+
+  .exp-logo{
+    width:42px; height:42px; border-radius:11px; flex-shrink:0;
+    background:var(--surface); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .exp-logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .exp-logo span{ font-family:'Fraunces',serif; font-size:14px; color:var(--ink-soft); }
+
+  .exp-heading{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .exp-role{ font-family:'Fraunces',serif; font-size:20px; color:var(--ink); transition:color .25s ease; }
+  .exp-row summary:hover .exp-role{ color:var(--violet-2); }
+  .exp-company{ font-size:13px; color:var(--muted); font-family:'Inter',sans-serif; }
+
+  .exp-tag{
+    font-size:11.5px; font-weight:600; color:var(--gold); text-transform:uppercase; letter-spacing:0.05em;
+    white-space:nowrap; justify-self:end;
+  }
+
+  .exp-icon{ position:relative; width:16px; height:16px; justify-self:end; }
+  .exp-icon::before, .exp-icon::after{ content:''; position:absolute; background:var(--ink-soft); transition:transform .3s ease; }
+  .exp-icon::before{ left:0; top:7px; width:16px; height:1.5px; }
+  .exp-icon::after{ left:7px; top:0; width:1.5px; height:16px; }
+  .exp-row[open] .exp-icon::after{ transform:rotate(90deg); opacity:0; }
+  .exp-row[open] summary .exp-role{ color:var(--violet-2); }
+
+  .exp-body{ padding:0 4px 30px 214px; animation:exp-open .35s ease; }
+  .exp-body p{ font-size:15px; line-height:1.75; color:var(--ink-soft); max-width:560px; font-family:'Inter',sans-serif; }
+  @keyframes exp-open{ from{ opacity:0; transform:translateY(-6px);} to{ opacity:1; transform:translateY(0);} }
+
+  @media (max-width:780px){
+    .exp-row summary{ grid-template-columns:38px 1fr 20px; row-gap:8px; }
+    .exp-logo{ order:1; width:36px; height:36px; }
+    .exp-year{ grid-column:2; order:2; font-size:12.5px; color:var(--muted); }
+    .exp-heading{ grid-column:1 / -1; order:3; }
+    .exp-icon{ order:4; }
+    .exp-tag{ display:none; }
+    .exp-body{ padding-left:4px; }
   }
 
   /* ---------- skills ---------- */
@@ -360,47 +393,88 @@
       <h2 class="sec-title">Un recorrido por productos que exigen precisión</h2>
       <p class="sec-desc">Cinco años diseñando para industrias donde un error de contenido o de flujo tiene un costo real.</p>
     </div>
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-year">2023 — 2025</div><div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-role">UX/UI Designer &amp; UX Writer</div>
-          <div class="tl-company">BICE Inversiones</div>
-          <p class="tl-desc">Reestructuré contenidos ante la necesidad de deshabilitar un recomendador, evaluando cada vista impactada para prevenir vacíos de información y mantener una experiencia clara en la plataforma.</p>
+    <div class="exp-index reveal">
+
+      <details class="exp-row" open>
+        <summary>
+          <span class="exp-year">2023 — 2025</span>
+          <span class="exp-logo"><span>BI</span></span>
+          <span class="exp-heading">
+            <span class="exp-role">UX/UI Designer &amp; UX Writer</span>
+            <span class="exp-company">BICE Inversiones</span>
+          </span>
+          <span class="exp-tag">Banca &amp; inversiones</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="exp-body">
+          <p>Reestructuré contenidos ante la necesidad de deshabilitar un recomendador, evaluando cada vista impactada para prevenir vacíos de información y mantener una experiencia clara en la plataforma.</p>
         </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">2023</div><div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-role">UX/UI Designer &amp; UX Writer</div>
-          <div class="tl-company">GO BICE</div>
-          <p class="tl-desc">Mejora continua de landings públicas: diseño UX/UI, UX Writing y arquitectura de contenidos con foco en negocio.</p>
+      </details>
+
+      <details class="exp-row">
+        <summary>
+          <span class="exp-year">2023</span>
+          <span class="exp-logo"><span>GB</span></span>
+          <span class="exp-heading">
+            <span class="exp-role">UX/UI Designer &amp; UX Writer</span>
+            <span class="exp-company">GO BICE</span>
+          </span>
+          <span class="exp-tag">Landing pública</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="exp-body">
+          <p>Mejora continua de landings públicas: diseño UX/UI, UX Writing y arquitectura de contenidos con foco en negocio.</p>
         </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">2023</div><div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-role">Líder de Diseño UX/UI</div>
-          <div class="tl-company">PISEE</div>
-          <p class="tl-desc">Rediseño de PISEE 2.0 — sitio público, panel de administración y gestor de contenidos — a partir de un design system escalable, validado con research en Maze.</p>
+      </details>
+
+      <details class="exp-row">
+        <summary>
+          <span class="exp-year">2023</span>
+          <span class="exp-logo"><span>PS</span></span>
+          <span class="exp-heading">
+            <span class="exp-role">Líder de Diseño UX/UI</span>
+            <span class="exp-company">PISEE</span>
+          </span>
+          <span class="exp-tag">Gobierno · Design system</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="exp-body">
+          <p>Rediseño de PISEE 2.0 — sitio público, panel de administración y gestor de contenidos — a partir de un design system escalable, validado con research en Maze.</p>
         </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">2022</div><div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-role">UX/UI Designer</div>
-          <div class="tl-company">BICE LifePlan</div>
-          <p class="tl-desc">Rediseño estratégico del simulador de APV, mejorando conversión y claridad bajo estándares de usabilidad.</p>
+      </details>
+
+      <details class="exp-row">
+        <summary>
+          <span class="exp-year">2022</span>
+          <span class="exp-logo"><span>LP</span></span>
+          <span class="exp-heading">
+            <span class="exp-role">UX/UI Designer</span>
+            <span class="exp-company">BICE LifePlan</span>
+          </span>
+          <span class="exp-tag">Previsión</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="exp-body">
+          <p>Rediseño estratégico del simulador de APV, mejorando conversión y claridad bajo estándares de usabilidad.</p>
         </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-year">2020</div><div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-role">UX/UI Designer</div>
-          <div class="tl-company">Gob.cl</div>
-          <p class="tl-desc">Rediseño del sitio público del Estado, mejorando experiencia de usuario y accesibilidad bajo criterios globales.</p>
+      </details>
+
+      <details class="exp-row">
+        <summary>
+          <span class="exp-year">2020</span>
+          <span class="exp-logo"><span>GC</span></span>
+          <span class="exp-heading">
+            <span class="exp-role">UX/UI Designer</span>
+            <span class="exp-company">Gob.cl</span>
+          </span>
+          <span class="exp-tag">Gobierno &amp; accesibilidad</span>
+          <span class="exp-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="exp-body">
+          <p>Rediseño del sitio público del Estado, mejorando experiencia de usuario y accesibilidad bajo criterios globales.</p>
         </div>
-      </div>
+      </details>
+
     </div>
   </div>
 </section>
