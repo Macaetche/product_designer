@@ -1,4 +1,4 @@
-¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -88,7 +88,7 @@
   .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; justify-self:end; }
   .burger span{ width:22px; height:1.5px; background:var(--ink); }
   .mobile-menu{
-    display:flex; position:fixed; inset:0; z-index:99; background:rgba(250,248,252,0.98);
+    display:flex; position:fixed; inset:0; z-index:150; background:rgba(250,248,252,0.98);
     flex-direction:column; align-items:center; justify-content:center; gap:26px;
     opacity:0; pointer-events:none; transition:opacity .3s ease;
   }
@@ -667,7 +667,7 @@
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileClose = document.getElementById('mobileClose');
-  burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
